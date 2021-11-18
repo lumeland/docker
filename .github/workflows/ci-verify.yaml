@@ -1,0 +1,29 @@
+name: Verify Docker image(s)
+
+defaults:
+  run:
+    shell: "bash -o errexit -o nounset -o pipefail {0}"
+
+jobs:
+  verify:
+    name: Verify Docker image(s)
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: docker_build
+        env:
+          platform: ${{ matrix.platforms }}
+        run: |
+          cd ./${platform}/
+          docker build --tag oscarotero/lume:latest-${platform} ./
+    strategy:
+      matrix:
+        platforms:
+          - alpine
+          - debian
+
+on:
+  pull_request:
+    branches:
+      - main
