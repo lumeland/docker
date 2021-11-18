@@ -1,0 +1,18 @@
+#
+# Excludes
+.history/
+.idea/
+.settings/
+.vscode/
+
+.DS_Store
+.classpath
+.project
+Thumbs.db
+*.iml
+*.ipr
+*.iws
+
+
+#
+# Includes
