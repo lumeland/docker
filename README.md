@@ -8,5 +8,6 @@
 Official `Lume` Docker image(s):
 
 - Alpine Linux: [oscarotero/lume:alpine](https://hub.docker.com/r/oscarotero/lume/)
+- CentOS: [oscarotero/lume:centos](https://hub.docker.com/r/oscarotero/lume/)
 - Debian: [oscarotero/lume:debian](https://hub.docker.com/r/oscarotero/lume/) (default)
 - Ubuntu: [oscarotero/lume:ubuntu](https://hub.docker.com/r/oscarotero/lume/)
