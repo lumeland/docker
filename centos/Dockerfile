@@ -7,9 +7,7 @@ ENV LUME_VERSION="1.3.0"
 WORKDIR /home/lume/
 
 RUN set -o errexit -o nounset; \
-  groupadd -g 1001 lume; \
-  adduser -u 1001 -g lume lume; \
-  chown -r lume:lume /home/lume/; \
+  adduser --home-dir /home/lume/ --no-create-home --system --uid 1001 --user-group lume; \
   deno run --allow-all https://deno.land/x/lume@v${LUME_VERSION}/install.ts
 
 CMD ["lume"]
