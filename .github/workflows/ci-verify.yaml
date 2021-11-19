@@ -6,12 +6,11 @@ defaults:
 
 jobs:
   verify:
-    name: Verify Docker image(s)
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: Check out repository
         uses: actions/checkout@v2
-      - name: docker_build
+      - name: Build Docker image
         env:
           platform: ${{ matrix.platforms }}
         run: |
@@ -22,6 +21,7 @@ jobs:
         platforms:
           - alpine
           - debian
+          - ubuntu
 
 on:
   pull_request:
