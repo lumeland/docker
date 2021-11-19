@@ -1,7 +1,7 @@
 name: Build and Publish Docker image(s)
 
 jobs:
-  publish_to_registry:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -14,15 +14,13 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
       - name: Build and push
         uses: docker/build-push-action@v2
-        env:
-          platform: ${{ matrix.platforms }}
         with:
-          context: ./${platform}/
+          context: ./${{ matrix.platform }}/
           push: true
-          tags: oscarotero/lume:1.3.0-${platform} # TODO: Parameterize version once this is finally working
+          tags: oscarotero/lume:1.3.0-${{ matrix.platform }} # TODO: Parameterize version once this is finally working
     strategy:
       matrix:
-        platforms:
+        platform:
           - alpine
           - debian
 
