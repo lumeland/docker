@@ -20,6 +20,7 @@ jobs:
       matrix:
         platforms:
           - alpine
+          - centos
           - debian
           - ubuntu
 
