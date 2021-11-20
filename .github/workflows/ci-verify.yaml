@@ -11,14 +11,10 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v2
       - name: Build Docker image
-        env:
-          platform: ${{ matrix.platforms }}
-        run: |
-          cd ./${platform}/
-          docker build --tag oscarotero/lume:latest-${platform} ./
+        run: docker build --file ./${{ matrix.distro }}/Dockerfile --tag oscarotero/lume:latest ./
     strategy:
       matrix:
-        platforms:
+        distro:
           - alpine
           - centos
           - debian
