@@ -7,7 +7,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v2
       - name: Retrieve Lume version from Dockerfile manifest
-        id: version
+        id: lume_version
         run: echo ::set-output name=docker_tag::$(grep -m1 "ENV LUME_VERSION=" ./${{ matrix.platform }}/Dockerfile | cut -d "=" -f2 | tr -d '"')
       - name: Log in to Docker Hub
         uses: docker/login-action@v1
@@ -15,15 +15,22 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           registry: docker.io
           username: ${{ secrets.DOCKERHUB_USERNAME }}
+      - name: Build and push default Docker image
+        if: matrix.distro == "debian"
+        uses: docker/build-push-action@v2
+        with:
+          context: ./${{ matrix.distro }}/
+          push: true
+          tags: oscarotero/lume:latest
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: ./${{ matrix.platform }}/
+          context: ./${{ matrix.distro }}/
           push: true
-          tags: oscarotero/lume:${{ steps.version.outputs.docker_tag }}-${{ matrix.platform }}
+          tags: oscarotero/lume:${{ matrix.distro }},oscarotero/lume:${{ matrix.distro }}-${{ steps.lume_version.outputs.docker_tag }}
     strategy:
       matrix:
-        platform:
+        distro:
           - alpine
           - centos
           - debian
