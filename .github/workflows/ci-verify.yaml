@@ -11,7 +11,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v2
       - name: Build Docker image
-        run: docker build --file ./${{ matrix.distro }}/Dockerfile --tag oscarotero/lume:latest ./
+        run: docker build --file ./${{ matrix.distro }}/Dockerfile --tag oscarotero/lume:${{ matrix.distro }}-latest ./
     strategy:
       matrix:
         distro:
