@@ -27,7 +27,7 @@ jobs:
         with:
           context: ./${{ matrix.distro }}/
           push: true
-          tags: oscarotero/lume:${{ matrix.distro }}-${{ steps.lume_version.outputs.docker_tag }},oscarotero/lume:${{ matrix.distro }}
+          tags: oscarotero/lume:${{ steps.lume_version.outputs.docker_tag }}-${{ matrix.distro }},oscarotero/lume:${{ matrix.distro }}
     strategy:
       matrix:
         distro:
