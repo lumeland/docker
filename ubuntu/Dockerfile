@@ -1,8 +1,8 @@
 #
 # https://hub.docker.com/r/denoland/deno/
-FROM docker.io/denoland/deno:ubuntu-1.17.1
+FROM docker.io/denoland/deno:ubuntu-1.17.2
 
-ENV LUME_VERSION="1.4.2"
+ENV LUME_VERSION="1.4.3"
 
 WORKDIR /home/lume/
 
