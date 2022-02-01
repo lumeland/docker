@@ -2,7 +2,7 @@
 # https://hub.docker.com/r/denoland/deno/
 FROM docker.io/denoland/deno:centos-1.18.1
 
-ENV LUME_VERSION="1.5.0"
+ENV LUME_VERSION="1.5.1"
 
 WORKDIR /home/lume/
 
