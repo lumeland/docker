@@ -4,7 +4,7 @@ ARG DENO_VERSION="1.20.1"
 
 FROM docker.io/denoland/deno:alpine-${DENO_VERSION}
 
-ARG LUME_VERSION="1.7.0"
+ARG LUME_VERSION="1.7.1"
 
 WORKDIR /home/lume/
 
