@@ -1,10 +1,10 @@
 #
 # https://hub.docker.com/r/denoland/deno/
-ARG DENO_VERSION="1.21.3"
+ARG DENO_VERSION="1.22.1"
 
 FROM docker.io/denoland/deno:ubuntu-${DENO_VERSION}
 
-ARG LUME_VERSION="1.9.0"
+ARG LUME_VERSION="1.9.1"
 
 WORKDIR /home/lume/
 
